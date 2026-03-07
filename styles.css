@@ -689,31 +689,34 @@ p {
 
 .contact-form {
     background-color: var(--bg-card);
-    padding: 2.5rem;
-    border-radius: var(--radius-xl);
+    padding: 1.2rem 1rem;
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .form-group label {
     display: block;
-    font-size: 0.875rem;
+    font-size: 0.82rem;
     font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 0.875rem 1rem;
+    padding: 0.5rem 0.75rem;
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     color: var(--text-primary);
+    font-size: 0.95rem;
     transition: all var(--transition-fast);
 }
 
@@ -731,7 +734,7 @@ p {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 70px;
 }
 
 /* ===================================
