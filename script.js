@@ -1,11 +1,9 @@
 /**
- * Varcera - Digital & Technology Services
+ * Varcera - AI Voice Agents for Restaurants & Healthcare
  * Interactive JavaScript
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all components
-    initThemeToggle();
     initMobileNavigation();
     initSmoothScroll();
     initActiveNavLink();
@@ -14,75 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Theme Toggle Functionality
- * Supports system preference and manual override
- */
-function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // Get saved theme or use system preference
-    const getSavedTheme = () => localStorage.getItem('varcera-theme');
-    const saveTheme = (theme) => localStorage.setItem('varcera-theme', theme);
-    
-    // Apply theme to document
-    const applyTheme = (theme) => {
-        if (theme === 'system') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', theme);
-        }
-    };
-    
-    // Get current effective theme
-    const getCurrentTheme = () => {
-        const savedTheme = getSavedTheme();
-        if (savedTheme && savedTheme !== 'system') {
-            return savedTheme;
-        }
-        return prefersDark.matches ? 'dark' : 'light';
-    };
-    
-    // Initialize theme on load
-    const savedTheme = getSavedTheme();
-    if (savedTheme && savedTheme !== 'system') {
-        applyTheme(savedTheme);
-    }
-    
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = getCurrentTheme();
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
-        saveTheme(newTheme);
-    });
-    
-    // Listen for system theme changes
-    prefersDark.addEventListener('change', (e) => {
-        const savedTheme = getSavedTheme();
-        if (!savedTheme || savedTheme === 'system') {
-            // Only auto-switch if user hasn't set a manual preference
-            applyTheme('system');
-        }
-    });
-}
-
-/**
  * Mobile Navigation Toggle
  */
 function initMobileNavigation() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Toggle mobile menu
+
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
         document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
-    
-    // Close menu when clicking a link
+
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navToggle.classList.remove('active');
@@ -90,8 +32,7 @@ function initMobileNavigation() {
             document.body.style.overflow = '';
         });
     });
-    
-    // Close menu when clicking outside
+
     document.addEventListener('click', (e) => {
         if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
             navToggle.classList.remove('active');
@@ -107,15 +48,15 @@ function initMobileNavigation() {
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
+                e.preventDefault();
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
@@ -131,13 +72,13 @@ function initSmoothScroll() {
 function initActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     const observerOptions = {
         root: null,
         rootMargin: '-20% 0px -80% 0px',
         threshold: 0
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -151,66 +92,82 @@ function initActiveNavLink() {
             }
         });
     }, observerOptions);
-    
+
     sections.forEach(section => observer.observe(section));
 }
 
 /**
- * Form Handling
+ * Form Handling — submits to Formspree via fetch so the page never reloads.
+ * Requires the form's `action` attribute in index.html to be set to a real
+ * Formspree endpoint (https://formspree.io/f/xxxxxxxx) — see README.
  */
 function initFormHandling() {
     const contactForm = document.querySelector('.contact-form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            let isValid = true;
-            const inputs = contactForm.querySelectorAll('input, textarea');
-            
-            inputs.forEach(input => {
-                if (input.hasAttribute('required') && !input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = '#ef4444';
-                } else {
-                    input.style.borderColor = '';
-                }
-            });
-            
-            if (isValid) {
-                // For GitHub Pages, we'll just show a success message
-                // In production, you'd send this to a backend or service like Formspree
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-                submitBtn.disabled = true;
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button after delay
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 3000);
+    if (!contactForm) return;
+
+    let statusEl = contactForm.querySelector('.form-status');
+    if (!statusEl) {
+        statusEl = document.createElement('p');
+        statusEl.className = 'form-status';
+        contactForm.appendChild(statusEl);
+    }
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+        const inputs = contactForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if (input.hasAttribute('required') && !input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = '#b91c1c';
+            } else {
+                input.style.borderColor = '';
             }
         });
-        
-        // Remove error styling on input
-        contactForm.querySelectorAll('input, textarea').forEach(input => {
-            input.addEventListener('input', () => {
-                input.style.borderColor = '';
+
+        if (!isValid) {
+            statusEl.textContent = 'Please fill in all fields.';
+            statusEl.className = 'form-status error';
+            return;
+        }
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        statusEl.textContent = '';
+        statusEl.className = 'form-status';
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
             });
+
+            if (response.ok) {
+                statusEl.textContent = "Message sent — we'll be in touch soon.";
+                statusEl.className = 'form-status success';
+                contactForm.reset();
+            } else {
+                statusEl.textContent = 'Something went wrong. Please try emailing us directly.';
+                statusEl.className = 'form-status error';
+            }
+        } catch (err) {
+            statusEl.textContent = 'Network error. Please try emailing us directly.';
+            statusEl.className = 'form-status error';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
+
+    contactForm.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+            input.style.borderColor = '';
         });
-    }
+    });
 }
 
 /**
@@ -218,15 +175,15 @@ function initFormHandling() {
  */
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
-        '.service-card, .portfolio-item, .stat, .about-text, .about-visual'
+        '.service-card, .portfolio-item, .about-text, .about-visual'
     );
-    
+
     const observerOptions = {
         root: null,
         rootMargin: '0px 0px -100px 0px',
         threshold: 0.1
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -236,8 +193,7 @@ function initScrollAnimations() {
             }
         });
     }, observerOptions);
-    
-    // Set initial styles and observe
+
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -249,18 +205,12 @@ function initScrollAnimations() {
 /**
  * Header scroll effect
  */
-let lastScroll = 0;
 const header = document.querySelector('.header');
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    // Add shadow on scroll
-    if (currentScroll > 10) {
+    if (window.pageYOffset > 10) {
         header.style.boxShadow = 'var(--shadow-md)';
     } else {
         header.style.boxShadow = '';
     }
-    
-    lastScroll = currentScroll;
 });
