@@ -11,7 +11,7 @@
 
 ## Links
 - [Home](https://varcera.in/): overview of solutions and contact form
-- [Sunayi](https://varcera.in/sunayi/): features, how it works, demo call transcripts and recordings, and pricing
+- [Sunayi](https://varcera.in/sunayi/): features, call recordings and transcripts, and pricing
 
 ## Pricing (monthly, no setup or onboarding fee)
 - India: Starter 2,000 INR (3,000 minutes), Growth 3,500 INR (6,000 minutes, advanced analytics, priority support). Top-ups 1 INR per minute.
