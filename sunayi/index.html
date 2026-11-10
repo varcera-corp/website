@@ -33,6 +33,11 @@
         .demo-call h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
         .demo-call .why { color: var(--text-secondary); margin-bottom: 1.25rem; }
         .demo-audio { display: block; width: 100%; margin-bottom: 1.25rem; }
+        .transcript { margin-top: 0.25rem; }
+        .transcript summary { display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; list-style: none; padding: 0.5rem 1.1rem; border: 1px solid var(--border-color); border-radius: 999px; background: var(--bg-tertiary); font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
+        .transcript summary::-webkit-details-marker { display: none; }
+        .transcript summary:hover { border-color: var(--color-primary); }
+        .transcript[open] summary { margin-bottom: 1rem; }
         .turn { display: flex; gap: 0.75rem; padding: 0.5rem 0; border-top: 1px solid var(--border-light); }
         .who { flex: 0 0 4.75rem; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); padding-top: 0.15rem; }
         .who.bot { color: var(--color-primary); }
@@ -135,13 +140,15 @@
                     <p class="section-description">Sample calls to a demo restaurant, Spice Route Kitchen.</p>
                 </div>
 
-                <p class="demo-note">These are demo calls placed by the Varcera team to a sample restaurant, not customer calls. Transcripts are generated automatically from the audio and can contain recognition errors; the recording is the source of truth.</p>
+                <p class="demo-note">These are demo calls placed by the Varcera team to a sample restaurant, not customer calls. Tap 💬 on a call to read its transcript. Transcripts are generated automatically from the audio and can contain recognition errors; the recording is the source of truth.</p>
 
                 <article class="demo-call">
                     <h3>A booking that changes mid-call</h3>
                     <p class="why">The caller changes both the party size and the day. Sunayi reads back the new booking and waits for a yes before confirming.</p>
                     <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-priya.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-priya.mp3">Download the recording</a>.</audio>
-                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
+                    <details class="transcript">
+                        <summary>&#128172; Transcript</summary>
+                        <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">uh I want to book a table.</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">प्रिया</div></div>
@@ -154,26 +161,32 @@
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">That's a table for 2 on Saturday, November 14th at 9 PM&mdash;should I book it?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">Yes.</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Your table for 2 on Saturday, November 14th at 9 PM is confirmed, Priya. Anything else I can do for you?</div></div>
+                    </details>
                 </article>
 
                 <article class="demo-call">
                     <h3>A food-allergy question</h3>
                     <p class="why">Sunayi does not guess about allergens. It takes the caller's name and number so the owner can call back.</p>
                     <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-allergy.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-allergy.mp3">Download the recording</a>.</audio>
-                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
+                    <details class="transcript">
+                        <summary>&#128172; Transcript</summary>
+                        <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">हाय, my daughter has a peanut allergy. uh is a better she can say for her I don't want to guess हाँ So that is I am asking.</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">For specific allergens like peanuts, the owner or kitchen will confirm directly to keep your daughter safe. Would you like me to take your name and number so the owner can call you back about this?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">या देह And the number would be 9014148879</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thank you. May I have your name, please?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">स्नेह</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Got it, Sneha. I'll have the owner call you back about the peanut allergy. Is there anything else I can assist with?</div></div>
+                    </details>
                 </article>
 
                 <article class="demo-call">
                     <h3>A Hindi-English reservation with an unclear answer</h3>
                     <p class="why">The caller mixes Hindi and English and gives two possible times. When one answer is unclear, Sunayi asks again instead of guessing.</p>
                     <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-rahul.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-rahul.mp3">Download the recording</a>.</audio>
-                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
+                    <details class="transcript">
+                        <summary>&#128172; Transcript</summary>
+                        <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">Can you help me for Reservation</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">राहुल</div></div>
@@ -187,6 +200,7 @@
                     <div class="turn"><div class="who">Caller</div><div class="say">Meg के 8 PM।</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">That's a table for five on Thursday, November 12th at 8 PM&mdash;shall I book it?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">Yes</div></div>
+                    </details>
                 </article>
             </div>
         </section>
