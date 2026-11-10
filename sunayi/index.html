@@ -65,6 +65,19 @@
         .plan ul { margin: 0.5rem 0 0; padding-left: 1.25rem; display: grid; gap: 0.3rem; }
         .region { text-align: center; margin: 0 0 1rem; font-size: 1.15rem; }
         .price-foot { text-align: center; color: var(--text-secondary); font-size: 0.95rem; }
+        .talk { max-width: 760px; margin: 0 auto 2rem; display: flex; gap: 1.5rem; align-items: center; background: #0E3B2B; color: #F5FAF6; border-radius: 20px; padding: 1.75rem 2rem; box-shadow: 0 18px 40px rgba(15,110,79,.18); }
+        .talk .mic { position: relative; flex: 0 0 64px; height: 64px; border-radius: 50%; background: #7BE0A3; color: #0E3B2B; display: flex; align-items: center; justify-content: center; }
+        .talk .mic::before, .talk .mic::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #7BE0A3; animation: ring 2.4s ease-out infinite; }
+        .talk .mic::after { animation-delay: 1.2s; }
+        @keyframes ring { from { transform: scale(1); opacity: .7; } to { transform: scale(1.7); opacity: 0; } }
+        @media (prefers-reduced-motion: reduce) { .talk .mic::before, .talk .mic::after { animation: none; opacity: 0; } }
+        .talk .mic svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+        .talk h3 { font-size: 1.35rem; margin: 0 0 .25rem; color: #F5FAF6; }
+        .talk p { margin: 0; color: #C4DDCF; }
+        .talk .go { margin-left: auto; flex: 0 0 auto; background: #7BE0A3; color: #0E3B2B; font-weight: 700; padding: .8rem 1.4rem; border-radius: 999px; text-decoration: none; white-space: nowrap; }
+        .talk .go:hover { background: #A5EFC3; }
+        @media (max-width: 640px) { .talk { flex-direction: column; text-align: center; padding: 1.5rem; } .talk .go { margin: 0; width: 100%; text-align: center; } }
+        .nav-live { background: #18794A; color: #fff !important; border-radius: 999px; padding: .35rem .9rem !important; }
         .s-cta { text-align: center; padding: 4rem 0; background: var(--bg-secondary); }
         @media (max-width: 640px) { .who { flex-basis: 3.75rem; } .demo-call { padding: 1.25rem; } }
     </style>
@@ -79,6 +92,7 @@
             <ul class="nav-menu" style="position:static;transform:none;opacity:1;pointer-events:auto;flex-direction:row;flex-wrap:wrap;padding:0;border:0;background:none">
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#demos" class="nav-link">Demo calls</a></li>
+                <li><a href="https://voicecat.up.railway.app/live" class="nav-link nav-live" target="_blank" rel="noopener">Talk live</a></li>
                 <li><a href="#pricing" class="nav-link">Pricing</a></li>
                 <li><a href="../#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -149,7 +163,16 @@
                 <div class="section-header">
                     <span class="section-label">Listen</span>
                     <h2 class="section-title">Hear Sunayi take the call</h2>
-                    <p class="section-description">Real recordings.</p>
+                    <p class="section-description">Call her yourself, or play a recording.</p>
+                </div>
+
+                <div class="talk" id="talk">
+                    <span class="mic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+                    <div>
+                        <h3>Call Sunayi right now</h3>
+                        <p>Talk to her from your browser. No signup, 5 minutes.</p>
+                    </div>
+                    <a class="go" href="https://voicecat.up.railway.app/live" target="_blank" rel="noopener">Start the call</a>
                 </div>
 
                 <article class="demo-call">
