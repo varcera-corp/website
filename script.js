@@ -101,6 +101,8 @@ function initActiveNavLink() {
  * Requires the form's `action` attribute in index.html to be set to a real
  * Formspree endpoint (https://formspree.io/f/xxxxxxxx) — see README.
  */
+const LEAD_ENDPOINT = 'https://voicecat.up.railway.app/api/contact';
+
 function initFormHandling() {
     const contactForm = document.querySelector('.contact-form');
     if (!contactForm) return;
@@ -140,13 +142,24 @@ function initFormHandling() {
         statusEl.className = 'form-status';
 
         try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: new FormData(contactForm),
-                headers: { 'Accept': 'application/json' }
-            });
+            // Send to both: Formspree (email copy) and our own backend (lead list).
+            // The message counts as sent if either one accepts it.
+            const formData = new FormData(contactForm);
+            const [viaEmail, viaServer] = await Promise.allSettled([
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                }),
+                fetch(LEAD_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(Object.fromEntries(formData.entries()))
+                })
+            ]);
+            const accepted = (r) => r.status === 'fulfilled' && r.value.ok;
 
-            if (response.ok) {
+            if (accepted(viaEmail) || accepted(viaServer)) {
                 statusEl.textContent = "Message sent — we'll be in touch soon.";
                 statusEl.className = 'form-status success';
                 contactForm.reset();
