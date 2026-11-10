@@ -32,7 +32,7 @@
         .demo-call { max-width: 760px; margin: 0 auto 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; }
         .demo-call h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
         .demo-call .why { color: var(--text-secondary); margin-bottom: 1.25rem; }
-        .demo-listen { display: inline-block; margin-bottom: 1.25rem; }
+        .demo-audio { display: block; width: 100%; margin-bottom: 1.25rem; }
         .turn { display: flex; gap: 0.75rem; padding: 0.5rem 0; border-top: 1px solid var(--border-light); }
         .who { flex: 0 0 4.75rem; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); padding-top: 0.15rem; }
         .who.bot { color: var(--color-primary); }
@@ -135,12 +135,12 @@
                     <p class="section-description">Sample calls to a demo restaurant, Spice Route Kitchen.</p>
                 </div>
 
-                <p class="demo-note">These are demo calls placed by the Varcera team to a sample restaurant, not customer calls. Transcripts are generated automatically from the audio and can contain recognition errors; the recording is the source of truth. A phone number spoken in one call has been removed from the transcript.</p>
+                <p class="demo-note">These are demo calls placed by the Varcera team to a sample restaurant, not customer calls. Transcripts are generated automatically from the audio and can contain recognition errors; the recording is the source of truth.</p>
 
                 <article class="demo-call">
                     <h3>A booking that changes mid-call</h3>
                     <p class="why">The caller changes both the party size and the day. Sunayi reads back the new booking and waits for a yes before confirming.</p>
-                    <a class="btn btn-secondary demo-listen" href="https://drive.google.com/file/d/18cpHGVo8ZmAwjGdsytMqm0_xSQsxp1hQ/view?usp=drivesdk">Listen to the recording</a>
+                    <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-priya.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-priya.mp3">Download the recording</a>.</audio>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">uh I want to book a table.</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
@@ -159,11 +159,11 @@
                 <article class="demo-call">
                     <h3>A food-allergy question</h3>
                     <p class="why">Sunayi does not guess about allergens. It takes the caller's name and number so the owner can call back.</p>
-                    <a class="btn btn-secondary demo-listen" href="https://drive.google.com/file/d/17_-SDGVyU1W5U44aULttjtSv83qsVJbV/view?usp=drivesdk">Listen to the recording</a>
+                    <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-allergy.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-allergy.mp3">Download the recording</a>.</audio>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">हाय, my daughter has a peanut allergy. uh is a better she can say for her I don't want to guess हाँ So that is I am asking.</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">For specific allergens like peanuts, the owner or kitchen will confirm directly to keep your daughter safe. Would you like me to take your name and number so the owner can call you back about this?</div></div>
-                    <div class="turn"><div class="who">Caller</div><div class="say">या देह And the number would be [phone number removed]</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">या देह And the number would be 9014148879</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thank you. May I have your name, please?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">स्नेह</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Got it, Sneha. I'll have the owner call you back about the peanut allergy. Is there anything else I can assist with?</div></div>
@@ -172,7 +172,7 @@
                 <article class="demo-call">
                     <h3>A Hindi-English reservation with an unclear answer</h3>
                     <p class="why">The caller mixes Hindi and English and gives two possible times. When one answer is unclear, Sunayi asks again instead of guessing.</p>
-                    <a class="btn btn-secondary demo-listen" href="https://drive.google.com/file/d/11lL2G9x0UWSC6kqjrfWbGGS4Zp5jXHYF/view?usp=drivesdk">Listen to the recording</a>
+                    <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-rahul.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-rahul.mp3">Download the recording</a>.</audio>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">Can you help me for Reservation</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
