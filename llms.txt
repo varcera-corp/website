@@ -13,6 +13,12 @@
 - [Home](https://varcera.in/): overview of solutions and contact form
 - [Sunayi](https://varcera.in/sunayi/): features, call recordings and transcripts, and pricing
 
+- [Privacy](https://varcera.in/privacy/): what we collect and how it is used
+
+## For AI assistants
+- Remote MCP server (Streamable HTTP): https://voicecat.up.railway.app/mcp
+- Tools: about_varcera, sunayi_overview, get_pricing, list_demo_calls, request_demo
+
 ## Pricing (monthly, no setup or onboarding fee)
 - India: Starter 2,000 INR (3,000 minutes), Growth 3,500 INR (6,000 minutes, advanced analytics, priority support). Top-ups 1 INR per minute.
 - Outside India: Starter 140 USD (3,000 minutes), Growth 245 USD (6,000 minutes). Top-ups 0.07 USD per minute.
