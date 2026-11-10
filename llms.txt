@@ -1,0 +1,22 @@
+# Varcera
+
+> Varcera builds AI voice agents for restaurants and healthcare providers. Its voice receptionist, Sunayi, answers every phone call, takes table reservations and appointments, answers questions from the business's own information, and records each call (transcript, notes and outcome) for the owner. It speaks English, Hindi and Hinglish.
+
+## What it does
+- Answers inbound calls so a business does not miss a customer while staff are busy.
+- Restaurants: takes reservations (name, party size, date and time), reads the booking back and waits for the caller's confirmation before booking, and respects the restaurant's opening hours.
+- Healthcare: matches callers to the right doctor and books appointments against live availability.
+- When it does not know something (for example allergen details), it does not guess: it takes the caller's name and number so the owner can call back.
+- Gives owners call records, transcripts, notes and nightly summaries.
+
+## Links
+- [Home](https://varcera.in/): overview of solutions and contact form
+- [Sunayi](https://varcera.in/sunayi/): features, how it works, demo call transcripts and recordings, and pricing
+
+## Pricing (monthly, no setup or onboarding fee)
+- India: Starter 2,000 INR (3,000 minutes), Growth 3,500 INR (6,000 minutes, advanced analytics, priority support). Top-ups 1 INR per minute.
+- Outside India: Starter 140 USD (3,000 minutes), Growth 245 USD (6,000 minutes). Top-ups 0.07 USD per minute.
+
+## Contact
+- Email: varcera.corp@gmail.com
+- Phone: +91 90141 48879

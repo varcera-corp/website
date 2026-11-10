@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# AI search and assistant crawlers: allowed so Varcera can be found and described accurately.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+Sitemap: https://varcera.in/sitemap.xml

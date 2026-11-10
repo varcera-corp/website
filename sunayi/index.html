@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sunayi by Varcera: an AI voice receptionist for restaurants. Answers every call in English, Hindi and Hinglish, books tables, answers questions and shows every call on your dashboard. Hear demo calls and see pricing from ₹2,000 a month (US$140 outside India).">
+    <title>Sunayi: AI Voice Receptionist for Restaurants | Varcera</title>
+    <link rel="canonical" href="https://varcera.in/sunayi/">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .s-main { padding-top: 72px; }
+        .s-hero { padding: 5rem 0 3rem; text-align: center; background: var(--bg-secondary); }
+        .s-hero h1 { margin-bottom: 1rem; }
+        .s-hero p.lead { font-size: 1.25rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto 2rem; }
+        .s-hero .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .s-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+        .s-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; }
+        .s-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+        .s-card p { color: var(--text-secondary); margin: 0; }
+        .s-steps { max-width: 760px; margin: 0 auto 2rem; display: grid; gap: 1rem; }
+        .s-step { display: flex; gap: 1rem; align-items: flex-start; }
+        .s-step .n { flex: 0 0 2.5rem; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--color-primary); }
+        .s-step h3 { font-size: 1.1rem; margin-bottom: 0.15rem; }
+        .s-step p { margin: 0; color: var(--text-secondary); }
+        .s-dash { max-width: 760px; margin: 0 auto; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem 2rem; }
+        .s-dash h3 { margin-bottom: 0.75rem; }
+        .s-dash ul { margin: 0; padding-left: 1.25rem; color: var(--text-secondary); display: grid; gap: 0.35rem; }
+        .demo-note { max-width: 760px; margin: 0 auto 2rem; padding: 1rem 1.25rem; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-secondary); font-size: 0.95rem; }
+        .demo-call { max-width: 760px; margin: 0 auto 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; }
+        .demo-call h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+        .demo-call .why { color: var(--text-secondary); margin-bottom: 1.25rem; }
+        .demo-listen { display: inline-block; margin-bottom: 1.25rem; }
+        .turn { display: flex; gap: 0.75rem; padding: 0.5rem 0; border-top: 1px solid var(--border-light); }
+        .who { flex: 0 0 4.75rem; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); padding-top: 0.15rem; }
+        .who.bot { color: var(--color-primary); }
+        .say { flex: 1; color: var(--text-primary); }
+        .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 820px; margin: 0 auto 1.5rem; }
+        .plan { background: var(--bg-card); border: 2px solid var(--border-color); border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .plan.rec { background: #0E3B2B; border-color: #0E3B2B; color: #F5FAF6; }
+        .plan .name { font-family: 'Sora', sans-serif; font-weight: 700; color: var(--color-primary); }
+        .plan.rec .name { color: #7BE0A3; }
+        .plan .tag { display: inline-block; margin-left: 0.5rem; font-size: 0.75rem; font-weight: 700; background: #7BE0A3; color: #0E3B2B; border-radius: 999px; padding: 0.15rem 0.6rem; }
+        .plan .price { font-family: 'Sora', sans-serif; font-size: 2.75rem; font-weight: 700; line-height: 1.1; }
+        .plan .price small { font-size: 1rem; font-weight: 500; opacity: 0.75; }
+        .plan .mins { font-weight: 700; font-size: 1.15rem; }
+        .plan .sub, .plan li { opacity: 0.85; }
+        .plan ul { margin: 0.5rem 0 0; padding-left: 1.25rem; display: grid; gap: 0.3rem; }
+        .region { text-align: center; margin: 0 0 1rem; font-size: 1.15rem; }
+        .price-foot { text-align: center; color: var(--text-secondary); font-size: 0.95rem; }
+        .s-cta { text-align: center; padding: 4rem 0; background: var(--bg-secondary); }
+        @media (max-width: 640px) { .who { flex-basis: 3.75rem; } .demo-call { padding: 1.25rem; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container" style="flex-wrap:wrap;gap:0.5rem">
+            <a href="../" class="logo">
+                <span class="logo-icon">V</span>
+                <span class="logo-text">Varcera</span>
+            </a>
+            <ul class="nav-menu" style="position:static;transform:none;opacity:1;pointer-events:auto;flex-direction:row;flex-wrap:wrap;padding:0;border:0;background:none">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#demos" class="nav-link">Demo calls</a></li>
+                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="../#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="s-main">
+        <section class="s-hero">
+            <div class="container">
+                <span class="section-label">Sunayi by Varcera</span>
+                <h1>Never miss another call.<br>Never miss another table.</h1>
+                <p class="lead">Sunayi is an AI voice receptionist for restaurants. It answers every call in English, Hindi and Hinglish, books tables, answers questions and shows every call on your dashboard.</p>
+                <div class="btns">
+                    <a href="#demos" class="btn btn-primary">Hear demo calls</a>
+                    <a href="#pricing" class="btn btn-secondary">See pricing</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">What it does</span>
+                    <h2 class="section-title">Every missed call is a missed table</h2>
+                    <p class="section-description">During rush hour, after hours and on days off, the phone rings out and callers try the next restaurant. Sunayi answers every call.</p>
+                </div>
+                <div class="s-grid">
+                    <div class="s-card"><h3>Answers 24/7</h3><p>Picks up in seconds, day or night.</p></div>
+                    <div class="s-card"><h3>English, Hindi, Hinglish</h3><p>Even when callers switch languages mid-sentence.</p></div>
+                    <div class="s-card"><h3>Books tables</h3><p>Checks your hours and logs the name, party size and time.</p></div>
+                    <div class="s-card"><h3>Answers questions</h3><p>Hours, location, menu, dietary needs, delivery and pricing.</p></div>
+                    <div class="s-card"><h3>Transfers to staff</h3><p>Hands the call to a real person when needed.</p></div>
+                    <div class="s-card"><h3>WhatsApp alerts</h3><p>No one free? You get the caller's number and call audio.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how" class="section" style="background:var(--bg-secondary)">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">How it works</span>
+                    <h2 class="section-title">Live in four steps</h2>
+                </div>
+                <div class="s-steps">
+                    <div class="s-step"><div class="n">01</div><div><h3>We set it up</h3><p>Your hours, menu and FAQs, loaded in. No setup fee.</p></div></div>
+                    <div class="s-step"><div class="n">02</div><div><h3>Forward your calls</h3><p>Keep your existing number. No app to install.</p></div></div>
+                    <div class="s-step"><div class="n">03</div><div><h3>Sunayi handles the caller</h3><p>Answers, books, transfers to staff or alerts you.</p></div></div>
+                    <div class="s-step"><div class="n">04</div><div><h3>You see everything</h3><p>Every call and booking lands on your dashboard.</p></div></div>
+                </div>
+                <div class="s-dash">
+                    <h3>Your dashboard includes</h3>
+                    <ul>
+                        <li>Recording and transcript of every call</li>
+                        <li>Topic, outcome and confidence per call</li>
+                        <li>Follow-ups and escalations flagged</li>
+                        <li>Minutes used, calls per week and month, average call length</li>
+                        <li>What callers ask about, calls by hour and day</li>
+                        <li>Contact export to CSV</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="demos" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Demo calls</span>
+                    <h2 class="section-title">Hear Sunayi on the phone</h2>
+                    <p class="section-description">Sample calls to a demo restaurant, Spice Route Kitchen.</p>
+                </div>
+
+                <p class="demo-note">These are demo calls placed by the Varcera team to a sample restaurant, not customer calls. Transcripts are generated automatically from the audio and can contain recognition errors; the recording is the source of truth. A phone number spoken in one call has been removed from the transcript.</p>
+
+                <article class="demo-call">
+                    <h3>A booking that changes mid-call</h3>
+                    <p class="why">The caller changes both the party size and the day. Sunayi reads back the new booking and waits for a yes before confirming.</p>
+                    <a class="btn btn-secondary demo-listen" href="https://drive.google.com/file/d/18cpHGVo8ZmAwjGdsytMqm0_xSQsxp1hQ/view?usp=drivesdk">Listen to the recording</a>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">uh I want to book a table.</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">प्रिया</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">How many guests will be joining you?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">They would be like 4 people</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">For which date would you like to book the table?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">At Friday Can you make it for Friday 8 PM and या।</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">That's a table for 4 on Friday, November 13th at 8 PM&mdash;shall I book it?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">Actually know what, make it for 2 people and Saturday at 9 PM.</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">That's a table for 2 on Saturday, November 14th at 9 PM&mdash;should I book it?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">Yes.</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Your table for 2 on Saturday, November 14th at 9 PM is confirmed, Priya. Anything else I can do for you?</div></div>
+                </article>
+
+                <article class="demo-call">
+                    <h3>A food-allergy question</h3>
+                    <p class="why">Sunayi does not guess about allergens. It takes the caller's name and number so the owner can call back.</p>
+                    <a class="btn btn-secondary demo-listen" href="https://drive.google.com/file/d/17_-SDGVyU1W5U44aULttjtSv83qsVJbV/view?usp=drivesdk">Listen to the recording</a>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">हाय, my daughter has a peanut allergy. uh is a better she can say for her I don't want to guess हाँ So that is I am asking.</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">For specific allergens like peanuts, the owner or kitchen will confirm directly to keep your daughter safe. Would you like me to take your name and number so the owner can call you back about this?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">या देह And the number would be [phone number removed]</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thank you. May I have your name, please?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">स्नेह</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Got it, Sneha. I'll have the owner call you back about the peanut allergy. Is there anything else I can assist with?</div></div>
+                </article>
+
+                <article class="demo-call">
+                    <h3>A Hindi-English reservation with an unclear answer</h3>
+                    <p class="why">The caller mixes Hindi and English and gives two possible times. When one answer is unclear, Sunayi asks again instead of guessing.</p>
+                    <a class="btn btn-secondary demo-listen" href="https://drive.google.com/file/d/11lL2G9x0UWSC6kqjrfWbGGS4Zp5jXHYF/view?usp=drivesdk">Listen to the recording</a>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">Can you help me for Reservation</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">राहुल</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks, Rahul. How many guests will be in your party?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">There will be like five people.</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Got it, five guests. What date would you like to reserve for?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">and you make it for Thursday at 7 और 8 PM</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Just to confirm, would you like a reservation for five guests on Thursday at 7 PM or at 8 PM?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">Meggy Diet.</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sorry, could you say that again?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">Meg के 8 PM।</div></div>
+                    <div class="turn"><div class="who bot">Sunayi</div><div class="say">That's a table for five on Thursday, November 12th at 8 PM&mdash;shall I book it?</div></div>
+                    <div class="turn"><div class="who">Caller</div><div class="say">Yes</div></div>
+                </article>
+            </div>
+        </section>
+
+        <section id="pricing" class="section" style="background:var(--bg-secondary)">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Pricing</span>
+                    <h2 class="section-title">Simple monthly pricing</h2>
+                    <p class="section-description">No setup or onboarding fee.</p>
+                </div>
+                <h3 class="region">India (&#8377;)</h3>
+                <div class="plans">
+                    <div class="plan">
+                        <div class="name">Starter</div>
+                        <div class="price">&#8377;2,000 <small>/month</small></div>
+                        <div class="mins">3,000 minutes</div>
+                        <div class="sub">About &#8377;0.67 per minute &middot; roughly 1,500 calls (about 50 a day)</div>
+                        <ul>
+                            <li>All six Sunayi features</li>
+                            <li>Owner dashboard with recordings and transcripts</li>
+                        </ul>
+                        <div class="sub" style="margin-top:auto;padding-top:1rem"><b>Best for:</b> caf&eacute;s and smaller outlets</div>
+                    </div>
+                    <div class="plan rec">
+                        <div class="name">Growth <span class="tag">Recommended</span></div>
+                        <div class="price">&#8377;3,500 <small>/month</small></div>
+                        <div class="mins">6,000 minutes</div>
+                        <div class="sub">About &#8377;0.58 per minute (13% cheaper) &middot; roughly 3,000 calls (about 100 a day)</div>
+                        <ul>
+                            <li>Everything in Starter</li>
+                            <li>Advanced analytics</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <div class="sub" style="margin-top:auto;padding-top:1rem"><b>Best for:</b> busy restaurants and bars</div>
+                    </div>
+                </div>
+                <p class="price-foot">Top-ups at &#8377;1 per minute &middot; No setup or onboarding fee &middot; Calls estimated at about 2 minutes each</p>
+
+                <h3 class="region" style="margin-top:3rem">Outside India (US$)</h3>
+                <div class="plans">
+                    <div class="plan">
+                        <div class="name">Starter</div>
+                        <div class="price">$140 <small>/month</small></div>
+                        <div class="mins">3,000 minutes</div>
+                        <div class="sub">About $0.047 per minute &middot; roughly 1,500 calls (about 50 a day)</div>
+                        <ul>
+                            <li>All six Sunayi features</li>
+                            <li>Owner dashboard with recordings and transcripts</li>
+                        </ul>
+                        <div class="sub" style="margin-top:auto;padding-top:1rem"><b>Best for:</b> caf&eacute;s and smaller outlets</div>
+                    </div>
+                    <div class="plan rec">
+                        <div class="name">Growth <span class="tag">Recommended</span></div>
+                        <div class="price">$245 <small>/month</small></div>
+                        <div class="mins">6,000 minutes</div>
+                        <div class="sub">About $0.041 per minute (13% cheaper) &middot; roughly 3,000 calls (about 100 a day)</div>
+                        <ul>
+                            <li>Everything in Starter</li>
+                            <li>Advanced analytics</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <div class="sub" style="margin-top:auto;padding-top:1rem"><b>Best for:</b> busy restaurants and bars</div>
+                    </div>
+                </div>
+                <p class="price-foot">Top-ups at $0.07 per minute &middot; No setup or onboarding fee &middot; Calls estimated at about 2 minutes each</p>
+            </div>
+        </section>
+
+        <section class="s-cta">
+            <div class="container">
+                <h2 class="section-title">See Sunayi set up for your restaurant</h2>
+                <p class="section-description" style="margin:0 auto 1.5rem">Book a demo and we will show you Sunayi and your dashboard.</p>
+                <a href="../#contact" class="btn btn-primary">Book a demo</a>
+                <p style="margin-top:1.25rem;color:var(--text-secondary)">Or write to <a href="mailto:varcera.corp@gmail.com">varcera.corp@gmail.com</a> or call +91 90141 48879.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Varcera. All rights reserved. <a href="../">Back to varcera.in</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
