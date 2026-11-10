@@ -13,6 +13,7 @@
 - [Home](https://varcera.in/): overview of solutions and contact form
 - [Sunayi](https://varcera.in/sunayi/): features, call recordings and transcripts, and pricing
 
+- [Talk to Sunayi live](https://voicecat.up.railway.app/live): browser voice call with Sunayi, no sign-up
 - [Privacy](https://varcera.in/privacy/): what we collect and how it is used
 
 ## For AI assistants
