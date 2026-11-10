@@ -37,7 +37,8 @@
         .transcript summary { display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; list-style: none; padding: 0.5rem 1.1rem; border: 1px solid var(--border-color); border-radius: 999px; background: var(--bg-tertiary); font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
         .transcript summary::-webkit-details-marker { display: none; }
         .transcript summary:hover { border-color: var(--color-primary); }
-        .transcript[open] summary { margin-bottom: 1rem; }
+        .transcript[open] summary { margin-bottom: 0.75rem; }
+        .t-note { color: var(--text-muted); font-size: 0.85rem; margin: 0 0 0.75rem; }
         .turn { display: flex; gap: 0.75rem; padding: 0.5rem 0; border-top: 1px solid var(--border-light); }
         .who { flex: 0 0 4.75rem; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); padding-top: 0.15rem; }
         .who.bot { color: var(--color-primary); }
@@ -80,7 +81,7 @@
             <div class="container">
                 <span class="section-label">Sunayi by Varcera</span>
                 <h1>Never miss another call.<br>Never miss another table.</h1>
-                <p class="lead">Sunayi is an AI voice receptionist for restaurants. It answers every call in English, Hindi and Hinglish, books tables, answers questions and shows every call on your dashboard.</p>
+                <p class="lead">Sunayi picks up every call, books the table and answers the questions, in English, Hindi and Hinglish. You see all of it on your dashboard.</p>
                 <div class="btns">
                     <a href="#demos" class="btn btn-primary">Hear demo calls</a>
                     <a href="#pricing" class="btn btn-secondary">See pricing</a>
@@ -93,7 +94,7 @@
                 <div class="section-header">
                     <span class="section-label">What it does</span>
                     <h2 class="section-title">Every missed call is a missed table</h2>
-                    <p class="section-description">During rush hour, after hours and on days off, the phone rings out and callers try the next restaurant. Sunayi answers every call.</p>
+                    <p class="section-description">Rush hour. After hours. Your day off. The phone rings out and they call the next place. Not anymore.</p>
                 </div>
                 <div class="s-grid">
                     <div class="s-card"><h3>Answers 24/7</h3><p>Picks up in seconds, day or night.</p></div>
@@ -136,18 +137,17 @@
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Demo calls</span>
-                    <h2 class="section-title">Hear Sunayi on the phone</h2>
-                    <p class="section-description">Sample calls to a demo restaurant, Spice Route Kitchen.</p>
+                    <h2 class="section-title">Hear Sunayi take the call</h2>
+                    <p class="section-description">Real recordings. Sample restaurant.</p>
                 </div>
 
-                <p class="demo-note">These are demo calls placed by the Varcera team to a sample restaurant, not customer calls. Tap 💬 on a call to read its transcript. Transcripts are generated automatically from the audio and can contain recognition errors; the recording is the source of truth.</p>
-
                 <article class="demo-call">
-                    <h3>A booking that changes mid-call</h3>
-                    <p class="why">The caller changes both the party size and the day. Sunayi reads back the new booking and waits for a yes before confirming.</p>
+                    <h3>She changes her mind. Sunayi keeps up.</h3>
+                    <p class="why">4 people on Friday becomes 2 on Saturday. Sunayi reads the new booking back and waits for the yes.</p>
                     <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-priya.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-priya.mp3">Download the recording</a>.</audio>
                     <details class="transcript">
                         <summary>&#128172; Transcript</summary>
+                        <p class="t-note">Auto-generated from the audio, so a few words may be off.</p>
                         <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">uh I want to book a table.</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
@@ -165,11 +165,12 @@
                 </article>
 
                 <article class="demo-call">
-                    <h3>A food-allergy question</h3>
-                    <p class="why">Sunayi does not guess about allergens. It takes the caller's name and number so the owner can call back.</p>
+                    <h3>Allergy question. Zero guessing.</h3>
+                    <p class="why">Sunayi won't wing it on food safety. It takes a name and number so the owner calls back.</p>
                     <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-allergy.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-allergy.mp3">Download the recording</a>.</audio>
                     <details class="transcript">
                         <summary>&#128172; Transcript</summary>
+                        <p class="t-note">Auto-generated from the audio, so a few words may be off.</p>
                         <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">हाय, my daughter has a peanut allergy. uh is a better she can say for her I don't want to guess हाँ So that is I am asking.</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">For specific allergens like peanuts, the owner or kitchen will confirm directly to keep your daughter safe. Would you like me to take your name and number so the owner can call you back about this?</div></div>
@@ -181,11 +182,12 @@
                 </article>
 
                 <article class="demo-call">
-                    <h3>A Hindi-English reservation with an unclear answer</h3>
-                    <p class="why">The caller mixes Hindi and English and gives two possible times. When one answer is unclear, Sunayi asks again instead of guessing.</p>
+                    <h3>Hindi, English, and a mumbled time</h3>
+                    <p class="why">The caller says 7 or 8 PM, then mumbles. Sunayi asks again instead of guessing.</p>
                     <audio class="demo-audio" controls preload="none" src="audio/sunayi-demo-rahul.mp3">Your browser does not support audio playback. <a href="audio/sunayi-demo-rahul.mp3">Download the recording</a>.</audio>
                     <details class="transcript">
                         <summary>&#128172; Transcript</summary>
+                        <p class="t-note">Auto-generated from the audio, so a few words may be off.</p>
                         <div class="turn"><div class="who bot">Sunayi</div><div class="say">Thanks for calling Spice Route Kitchen, this is Sunayi &mdash; how can I help?</div></div>
                     <div class="turn"><div class="who">Caller</div><div class="say">Can you help me for Reservation</div></div>
                     <div class="turn"><div class="who bot">Sunayi</div><div class="say">Sure! May I have your name, please?</div></div>
@@ -272,8 +274,8 @@
 
         <section class="s-cta">
             <div class="container">
-                <h2 class="section-title">See Sunayi set up for your restaurant</h2>
-                <p class="section-description" style="margin:0 auto 1.5rem">Book a demo and we will show you Sunayi and your dashboard.</p>
+                <h2 class="section-title">Put Sunayi on your phone line</h2>
+                <p class="section-description" style="margin:0 auto 1.5rem">Book a demo. We set it up for your restaurant and show you the dashboard.</p>
                 <a href="../#contact" class="btn btn-primary">Book a demo</a>
                 <p style="margin-top:1.25rem;color:var(--text-secondary)">Or write to <a href="mailto:varcera.corp@gmail.com">varcera.corp@gmail.com</a> or call +91 90141 48879.</p>
             </div>
