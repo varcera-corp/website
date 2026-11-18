@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e3b2b">
+  <meta name="description" content="Talk to Sunayi, Varcera's AI voice receptionist for restaurants.">
+  <title>Talk to Sunayi | Varcera</title>
+  <style>
+    :root { color-scheme: dark; --bg: #0e3b2b; --surface: #134634; --accent: #7be0a3; --muted: #c4ddcf; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+    body { min-height: 100svh; display: grid; grid-template-rows: 64px minmax(0, 1fr); background: radial-gradient(70rem 45rem at 80% -20%, #1c6045, transparent 65%), var(--bg); color: #f5faf6; font: 15px/1.45 Inter, system-ui, sans-serif; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 clamp(16px, 4vw, 48px); border-bottom: 1px solid rgb(196 221 207 / 14%); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; font-size: 1rem; font-weight: 700; }
+    .brand img { width: 36px; height: 36px; object-fit: contain; border-radius: 9px; background: white; padding: 2px; }
+    .links { display: flex; align-items: center; gap: 18px; }
+    .links a { color: var(--muted); text-decoration: none; font-size: .9rem; }
+    .links a:hover, .links a:focus-visible { color: var(--accent); }
+    .links .repo { color: #092b1d; background: var(--accent); border-radius: 999px; padding: 9px 15px; font-weight: 700; }
+    main { min-height: 0; padding: 12px clamp(10px, 2vw, 24px) 16px; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 10px; }
+    .intro { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; max-width: 1440px; width: 100%; margin: 0 auto; }
+    h1 { margin: 0; font-size: clamp(1.05rem, 2vw, 1.35rem); letter-spacing: -.02em; }
+    .intro p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .frame-wrap { min-height: 0; width: 100%; max-width: 1440px; margin: 0 auto; overflow: hidden; border: 1px solid rgb(196 221 207 / 18%); border-radius: 16px; background: var(--surface); box-shadow: 0 24px 70px rgb(0 0 0 / 24%); }
+    iframe { width: 100%; height: 100%; min-height: 0; display: block; border: 0; background: var(--bg); }
+    @media (max-width: 640px) {
+      body { grid-template-rows: 56px minmax(0, 1fr); }
+      header { padding: 0 14px; }
+      .brand { gap: 8px; }
+      .brand img { width: 32px; height: 32px; }
+      .links { gap: 10px; }
+      .links a { font-size: .8rem; }
+      .links .repo { padding: 8px 11px; }
+      main { padding: 8px 8px max(8px, env(safe-area-inset-bottom)); grid-template-rows: auto minmax(0, 1fr); gap: 7px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 1px; padding: 0 4px; }
+      .intro p { font-size: .78rem; }
+      .frame-wrap { border-radius: 12px; }
+    }
+    @media (max-height: 600px) and (min-width: 641px) {
+      body { grid-template-rows: 52px minmax(0, 1fr); }
+      main { padding-top: 6px; padding-bottom: 8px; gap: 5px; }
+      .intro p { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="../"><img src="../varcera-logo.jpg" alt=""><span>Varcera</span></a>
+    <nav class="links" aria-label="Company links">
+      <a href="https://varcera.in/sunayi/">About Sunayi</a>
+      <a class="repo" href="https://github.com/varcera-corp/website" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Talk to Sunayi</h1>
+      <p>Live AI receptionist demo · Microphone access required · Up to 5 minutes</p>
+    </div>
+    <div class="frame-wrap">
+      <iframe src="https://voicecat.up.railway.app/live" title="Sunayi live voice demo" allow="microphone; autoplay" allowfullscreen></iframe>
+    </div>
+  </main>
+</body>
+</html>
